@@ -11,14 +11,6 @@
 
 ### Manual installation
 
-
-#### iOS
-
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-goojprt-mtp3-library` and add `RNGoojprtMtp3Library.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libRNGoojprtMtp3Library.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
-
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
@@ -34,20 +26,15 @@
       compile project(':react-native-goojprt-mtp3-library')
   	```
 
-#### Windows
-[Read it! :D](https://github.com/ReactWindows/react-native)
-
-1. In Visual Studio add the `RNGoojprtMtp3Library.sln` in `node_modules/react-native-goojprt-mtp3-library/windows/RNGoojprtMtp3Library.sln` folder to their solution, reference from their app.
-2. Open up your `MainPage.cs` app
-  - Add `using Goojprt.Mtp3.Library.RNGoojprtMtp3Library;` to the usings at the top of the file
-  - Add `new RNGoojprtMtp3LibraryPackage()` to the `List<IReactPackage>` returned by the `Packages` method
-
 
 ## Usage
-```javascript
-import RNGoojprtMtp3Library from 'react-native-goojprt-mtp3-library';
 
-// TODO: What to do with the module?
-RNGoojprtMtp3Library;
+1. Open bluetooth android and make sure bluetooth printer device is available
+2. Pair bluetooth printer device
+3. Make sure bluetooth device name MTP-3 !important
+4. 
+```javascript
+import BTPrint from 'react-native-goojprt-mtp3-library';
+
+BTPrint("<BT Device Mac Address>", "<PDF Local File Path>")
 ```
-  

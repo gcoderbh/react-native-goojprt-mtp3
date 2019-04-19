@@ -1,31 +1,38 @@
-apply plugin: 'com.android.library'
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
 
-def safeExtGet(prop, fallback) {
-    rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.0'
+    }
 }
 
+apply plugin: 'com.android.library'
+
 android {
-    compileSdkVersion safeExtGet('compileSdkVersion', 26)
-    buildToolsVersion safeExtGet('buildToolsVersion', '26.0.3')
+    compileSdkVersion 27
 
     defaultConfig {
-        minSdkVersion safeExtGet('minSdkVersion', 16)
-        targetSdkVersion safeExtGet('targetSdkVersion', 26)
+        minSdkVersion 16
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-    }
-    lintOptions {
-        abortOnError false
     }
 }
 
 repositories {
-    google()
-    maven { url "$rootDir/../node_modules/react-native/android" }
     jcenter()
+    google()
+    maven {
+        // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+        url "$rootDir/../node_modules/react-native/android"
+    }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    compileOnly "com.facebook.react:react-native:${safeExtGet('reactNativeVersion', '+')}"
+    implementation files('libs/printerlibs.jar')
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.1'
+    implementation 'com.facebook.react:react-native:+'
 }
